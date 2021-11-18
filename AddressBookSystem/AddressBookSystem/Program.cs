@@ -14,7 +14,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Exit");
+                Console.WriteLine("Enter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -43,6 +43,10 @@ namespace AddressBookSystem
                         newaddressbook.Display();
                         break;
                     case 3:
+                        newaddressbook.Editexistingcontact();
+                        newaddressbook.Display();
+                        break;
+                    case 4:
                         flag = false;
                         break;
                     default:
