@@ -71,6 +71,21 @@ namespace AddressBookSystem
                 }
             }
         }
+        public void Deletecontact()
+        {
+            Console.WriteLine("Enter first name you want delete");
+            string name = Console.ReadLine();
+            Contact delete = new Contact();
+            foreach (var contact in AddressList)
+            {
+                if (contact.firstname == name)
+                {
+                    AddressList.Remove(contact);
+                    Console.WriteLine(name + " contact is deleted");
+                    break;
+                }
+            }
+        }
         public void Display()
         {
             foreach (var contact in AddressList)
