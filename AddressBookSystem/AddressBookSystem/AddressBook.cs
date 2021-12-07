@@ -9,6 +9,7 @@ namespace AddressBookSystem
     public class AddressBook
     {
         List<Contact> AddressList = new List<Contact>();
+        Dictionary<string, List<Contact>> dictionaryname = new Dictionary<string, List<Contact>>();
         public void AddContact(Contact newcontact)
         {
             AddressList.Add(newcontact);
@@ -92,6 +93,34 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("\nfirstname: " + contact.firstname + "\nlastname: " + contact.lastname + "\naddress: " + contact.address + "\ncity: " + contact.city + "\nstate: " + contact.state + "\nzip: " + contact.zip + "\nphoneno: " + contact.phonenumber + "\nemail: " + contact.emailid);
             }
+        }
+        public void AddUniqueContact(string name)
+        {
+            foreach (var contact in AddressList)
+            {
+                if (AddressList.Contains(contact))
+                {
+                    string uniquename = Console.ReadLine();
+                    dictionaryname.Add(uniquename, AddressList);
+                }
+            }
+        }
+        public void DisplayUniqueContacts()
+        {
+            Console.WriteLine("enter name of dictionary to display that contact details");
+            string name = Console.ReadLine().ToLower();
+            foreach (var contacts in dictionaryname)
+            {
+                if (contacts.Key == name)
+                {
+                    foreach (var data in contacts.Value)
+                    {
+                        Console.WriteLine("The Contact of "+ data.firstname + " Details are\n:" + data.firstname + " " + data.lastname + " " + data.address + " " + data.city + " " + data.state + " " + data.zip + " " + data.phonenumber + " " + data.emailid);
+                    }
+                }
+            }
+            Console.WriteLine("UniqueContacts does not exist... Please create a UniquecontactList");
+            return;
         }
     }
 }
