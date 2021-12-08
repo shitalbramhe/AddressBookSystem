@@ -9,10 +9,12 @@ namespace AddressBookSystem
     public class AddressBook
     {
         List<Contact> AddressList = new List<Contact>();
-        Dictionary<string, List<Contact>> dictionaryname = new Dictionary<string, List<Contact>>();
+        Dictionary<string, List<Contact>> MultipleAddressbook = new Dictionary<string, List<Contact>>();
+
         public void AddContact(Contact newcontact)
         {
             AddressList.Add(newcontact);
+            MultipleAddressbook.Add(newcontact.firstname, AddressList);
         }
         public void Editexistingcontact()
         {
@@ -94,33 +96,45 @@ namespace AddressBookSystem
                 Console.WriteLine("\nfirstname: " + contact.firstname + "\nlastname: " + contact.lastname + "\naddress: " + contact.address + "\ncity: " + contact.city + "\nstate: " + contact.state + "\nzip: " + contact.zip + "\nphoneno: " + contact.phonenumber + "\nemail: " + contact.emailid);
             }
         }
-        public void AddUniqueContact(string name)
+        public void AddUniqueContact(string uniquename)
         {
             foreach (var contact in AddressList)
             {
-                if (AddressList.Contains(contact))
+                if (contact.firstname.Equals(uniquename))
                 {
-                    string uniquename = Console.ReadLine();
-                    dictionaryname.Add(uniquename, AddressList);
+                    Contact multiplecontact = new Contact();
+
+                    Console.WriteLine("Contact already exist , Enter unique name");
+                    multiplecontact.firstname = Console.ReadLine();
+                    multiplecontact.lastname = Console.ReadLine();
+                    multiplecontact.address = Console.ReadLine();
+                    multiplecontact.city = Console.ReadLine();
+                    multiplecontact.state = Console.ReadLine();
+                    multiplecontact.zip = Console.ReadLine();
+                    multiplecontact.phonenumber = Console.ReadLine();
+                    multiplecontact.emailid = Console.ReadLine();
+                    AddContact(multiplecontact);
                 }
             }
         }
         public void DisplayUniqueContacts()
         {
-            Console.WriteLine("enter name of dictionary to display that contact details");
+            Console.WriteLine("Enter firstname to display that contact details");
             string name = Console.ReadLine().ToLower();
-            foreach (var contacts in dictionaryname)
+            foreach (var contacts in MultipleAddressbook)
             {
                 if (contacts.Key == name)
                 {
                     foreach (var data in contacts.Value)
                     {
-                        Console.WriteLine("The Contact of "+ data.firstname + " Details are\n:" + data.firstname + " " + data.lastname + " " + data.address + " " + data.city + " " + data.state + " " + data.zip + " " + data.phonenumber + " " + data.emailid);
+                        Console.WriteLine("The Contact details of " + data.firstname + "are : \n" + data.firstname + " " + data.lastname + " " + data.address + " " + data.city + " " + data.state + " " + data.zip + " " + data.phonenumber + " " + data.emailid);
                     }
                 }
+
             }
-            Console.WriteLine("UniqueContacts does not exist... Please create a UniquecontactList");
-            return;
         }
     }
 }
+
+
+
