@@ -187,9 +187,36 @@ namespace AddressBookSystem
                         Console.WriteLine(data.firstname + " " + data.lastname + " is from " + data.state);
                     }
                     break;
-
             }
 
+        }
+        public void Count_person_city_state()
+        {
+            int count = 0;
+            Console.WriteLine("Enter your Choice for Searching a Person in");
+            Console.WriteLine("\n1.City \n2.State");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City");
+                    String city = Console.ReadLine();
+                    foreach (Contact personal_Details in this.AddressList.FindAll(c => c.city == city))
+                    {
+                        count = this.AddressList.Count();
+                    }
+                    Console.WriteLine(count);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State");
+                    String state = Console.ReadLine();
+                    foreach (Contact personal_Details in this.AddressList.FindAll(c => c.state == state))
+                    {
+                        count = this.AddressList.Count();
+                    }
+                    Console.WriteLine(count);
+                    break;
+            }
 
         }
     }
