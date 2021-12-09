@@ -14,7 +14,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Delete contact \n5. Add contact \n6. Add multiple Address Book with unique name \n7. Exit");
+                Console.WriteLine("Enter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Delete contact \n5. Add contact \n6. Add multiple Address Book with unique name \n7. Check For Duplicate \n8. Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -65,11 +65,17 @@ namespace AddressBookSystem
                         break;
                     case 6:
                         Console.WriteLine("Enter the Unique Contact to be added: ");
-                        string name = Console.ReadLine(); 
+                        string name = Console.ReadLine();
                         newaddressbook.AddUniqueContact(name);
                         newaddressbook.DisplayUniqueContacts();
                         break;
                     case 7:
+                        Console.WriteLine("Enter the Unique Contact to be added: ");
+                        string duplicatename = Console.ReadLine();
+                        newaddressbook.AddUniqueContact(duplicatename);
+                        newaddressbook.DisplayUniqueContacts();
+                        break;
+                    case 8:
                         flag = false;
                         break;
                     default:
@@ -80,4 +86,3 @@ namespace AddressBookSystem
         }
     }
 }
- 
