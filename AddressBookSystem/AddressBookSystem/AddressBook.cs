@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -275,6 +276,26 @@ namespace AddressBookSystem
                 using (var csvExport = new CsvWriter(writer, CultureInfo.CurrentCulture))
                 {
                     csvExport.WriteRecords(records);
+                }
+            }
+        }
+        public void ReadWriteinJson()
+        {
+            string importFilePath = @"E:\RFP\AddressBookSystem\AddressBookSystem\AddressBookSystem\File\adressbookimport.json";
+            string exportFilePath = @"E:\RFP\AddressBookSystem\AddressBookSystem\AddressBookSystem\File\addressbookexport.json";
+            using (StreamReader reader = new StreamReader(importFilePath))
+            {
+                var json = reader.ReadToEnd();
+                var data = JsonConvert.DeserializeObject<List<Contact>>(json);
+                foreach (var contact in data)
+                {
+                    Console.WriteLine("\nfirstname: " + contact.firstname + "\nlastname: " + contact.lastname + "\naddress: " + contact.address + "\ncity: " + contact.city + "\nstate: " + contact.state + "\nzip: " + contact.zip + "\nphoneno: " + contact.phonenumber + "\nemail: " + contact.emailid);
+                }
+                JsonSerializer serializer = new JsonSerializer();
+                using (StreamWriter sw = new StreamWriter(exportFilePath))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, data);
                 }
             }
         }
