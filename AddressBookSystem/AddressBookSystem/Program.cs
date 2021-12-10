@@ -14,7 +14,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Delete contact \n5. Add contact \n6. Add multiple Address Book with unique name \n7. Check For Duplicate \n8. Search person by city or state \n9. View person by city or state \n10.Count person by city or state \n11. Sort entries using person name \n12. Read  write IO file \n13. Exit");
+                Console.WriteLine("Enter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Delete contact \n5. Add contact \n6. Add multiple Address Book with unique name \n7. Check For Duplicate \n8. Search person by city or state \n9. View person by city or state \n10.Count person by city or state \n11. Sort entries using person name \n12. Read  write IO file \n13. Read/write CSV file \n14. Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -92,6 +92,9 @@ namespace AddressBookSystem
                         newaddressbook.WriteUsingStreamWriter();
                         break;
                     case 13:
+                        newaddressbook.ReadWriteasCsv();
+                        break;
+                    case 14:
                         flag = false;
                         break;
                     default:

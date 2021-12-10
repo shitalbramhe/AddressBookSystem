@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -252,6 +253,28 @@ namespace AddressBookSystem
                 foreach (var contact in AddressList)
                 {
                     sr.WriteLine("\nfirstname: " + contact.firstname + "\nlastname: " + contact.lastname + "\naddress: " + contact.address + "\ncity: " + contact.city + "\nstate: " + contact.state + "\nzip: " + contact.zip + "\nphoneno: " + contact.phonenumber + "\nemail: " + contact.emailid);
+                }
+            }
+        }
+        public void ReadWriteasCsv()
+        {
+
+            string importFilePath = @"E:\RFP\AddressBookSystem\AddressBookSystem\AddressBookSystem\File\import.csv";
+            string exportFilePath = @"E:\RFP\AddressBookSystem\AddressBookSystem\AddressBookSystem\File\export.csv";
+
+            using (var reader = new StreamReader(importFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
+            {
+                var records = csv.GetRecords<Contact>().ToList();
+                foreach (var contact in records)
+                {
+                    Console.WriteLine("\nfirstname: " + contact.firstname + "\nlastname: " + contact.lastname + "\naddress: " + contact.address + "\ncity: " + contact.city + "\nstate: " + contact.state + "\nzip: " + contact.zip + "\nphoneno: " + contact.phonenumber + "\nemail: " + contact.emailid);
+                }
+                
+                using (var writer = new StreamWriter(exportFilePath)) 
+                using (var csvExport = new CsvWriter(writer, CultureInfo.CurrentCulture))
+                {
+                    csvExport.WriteRecords(records);
                 }
             }
         }
