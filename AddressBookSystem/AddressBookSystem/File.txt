@@ -1,0 +1,14 @@
+﻿firstname,lastname,address,city,state,zip,phonenumber,emailid
+shital,bramhe,aalodi,wardha,maharashtra,442001,7066666789,shitalbramhe@gmail.com
+swara,bajait,aalodi,wardha,maharashtra,442001,7066666789,shitalbramhe@gmail.com
+a,bramhe,aalodi,wardha,maharashtra,442001,7066666789,shitalbramhe@gmail.com
+b,bramhe,aalodi,wardha,maharashtra,442001,7066666789,shitalbramhe@gmail.com
+
+firstname: shital
+lastname: dsdas
+address: fdsfsd
+city: dfgd
+state: sdfs
+zip: fdsf
+phoneno: fsds
+email: sdd

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -92,6 +93,7 @@ namespace AddressBookSystem
         }
         public void Display()
         {
+
             foreach (var contact in AddressList)
             {
                 Console.WriteLine("\nfirstname: " + contact.firstname + "\nlastname: " + contact.lastname + "\naddress: " + contact.address + "\ncity: " + contact.city + "\nstate: " + contact.state + "\nzip: " + contact.zip + "\nphoneno: " + contact.phonenumber + "\nemail: " + contact.emailid);
@@ -227,8 +229,34 @@ namespace AddressBookSystem
             }
 
         }
-    }
+        public void Readfile()
+        {
+            Console.WriteLine("The Contact List Using Stream Reader");
+            string filepath = @"E:\RFP\AddressBookSystem\AddressBookSystem\AddressBookSystem\File.txt";
 
+            using (StreamReader reader = File.OpenText(filepath))
+            {
+                string line = " ";
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+        }
+        public void WriteUsingStreamWriter()
+        {
+            Console.WriteLine("The Contact List Using Stream Writer");
+            String path = @"E:\RFP\AddressBookSystem\AddressBookSystem\AddressBookSystem\File.txt";
+            using (StreamWriter sr = File.AppendText(path))
+            {
+                foreach (var contact in AddressList)
+                {
+                    sr.WriteLine("\nfirstname: " + contact.firstname + "\nlastname: " + contact.lastname + "\naddress: " + contact.address + "\ncity: " + contact.city + "\nstate: " + contact.state + "\nzip: " + contact.zip + "\nphoneno: " + contact.phonenumber + "\nemail: " + contact.emailid);
+                }
+            }
+        }
+
+    }
 }
 
 
