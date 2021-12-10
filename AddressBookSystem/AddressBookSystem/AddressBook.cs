@@ -219,6 +219,14 @@ namespace AddressBookSystem
             }
 
         }
+        public void SortbyName()
+        {
+            foreach (KeyValuePair<string, List<Contact>> sortname in MultipleAddressbook.OrderBy(key => key.Key))
+            {
+                Console.WriteLine("Name of person: {0}", sortname.Key);
+            }
+
+        }
     }
 
 }
